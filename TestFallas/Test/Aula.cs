@@ -23,7 +23,7 @@ namespace Facultad
         /// Constructor público
         /// </summary>
         /// <param name="espacio">Espacio total del aula</param>
-        public Aula(short espacio) :this()
+        public Aula(short espacio) :this()// :this() agregado para corregir error en ListaCorrecta
         {
 
             this.Espacio = espacio;
@@ -36,7 +36,7 @@ namespace Facultad
         {
             get
             {
-                return (short)(this._espacio - this._alumnos.Count);
+                return (short)(this._espacio - this._alumnos.Count); //Corrijo "+" por "-" para corregir error en AgregarAlumnoEspacioDisponible
             }
         }
 
@@ -49,7 +49,16 @@ namespace Facultad
         {
             set
             {
-                if (value > 1 && value<51)
+                //Se corrige error en espacioAulaIncorrecto
+                if (value > 50)
+                {
+                    this._espacio = 50;
+                }
+                else if (value < 1)
+                {
+                    this._espacio = 1;
+                }
+                else 
                 {
                     this._espacio = value;
                 }
@@ -82,7 +91,7 @@ namespace Facultad
             else
             {
                 string mensaje = String.Format("El aula tiene sus {0} bancos ocupados", aula._espacio);
-                throw new Exception(mensaje);
+                throw new AulaLlenaException(mensaje); //Corrijo Exception por AulaLlenaException para evitar error en AgregarAlumnosAulaLlena
             }
         }
     }

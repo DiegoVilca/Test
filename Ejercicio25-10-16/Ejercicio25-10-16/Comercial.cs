@@ -8,11 +8,19 @@ namespace Ejercicio25_10_16
 {
     public class Comercial : Avion, IARBA
     {
-        
-        public double CalcularImpuesto()
+
+        public Comercial(double precio, double velocidadMaxima) :base(precio, velocidadMaxima)
         {
-            return base._precio * 1.18;
+
         }
-        
+
+
+
+
+
+        double IARBA.CalcularImpuesto()
+        {
+            return base._precio * 1.25;
+        }
     }
 }

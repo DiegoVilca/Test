@@ -17,21 +17,23 @@ namespace Ejercicio25_10_16
         }
 
 
-        double IAFIP.CalcularImpuesto()
-        {
-            return base._precio * 1.33;
-        }
-
         public override void MostrarPatente()
         {
-            Console.WriteLine("patente: "+base._patente);
+            Console.WriteLine("patente: " + base._patente);
         }
 
 
+
+        double IAFIP.CalcularImpuesto()
+        {
+            return this._precio * 1.28;
+        }
+
+       
     
         double IARBA.CalcularImpuesto()
         {
- 	        throw new NotImplementedException();
+            return this._precio * 1.23;
         }
 }
 }
